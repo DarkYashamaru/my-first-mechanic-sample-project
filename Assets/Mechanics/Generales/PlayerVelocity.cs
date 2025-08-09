@@ -11,3 +11,8 @@ public interface IPlayerVelocity
     public float Velocidad_Movimiento { get; }
     public bool Grounded { get; }
 }
+
+public interface IPlayerInteraction
+{
+    void Empujar_Jugador(Vector3 fuerza);
+}
