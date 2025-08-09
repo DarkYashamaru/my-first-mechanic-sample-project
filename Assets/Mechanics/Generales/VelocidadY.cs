@@ -2,11 +2,11 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class VelocidadX : MonoBehaviour
+public class VelocidadY : MonoBehaviour
 {
     private IPlayerVelocity _velocidad_jugador;
     public TextMeshProUGUI texto_velocidad;
-    public TextMeshProUGUI texto_vector;
+    private TextMeshProUGUI _texto_vector;
     public Image vector_positivo;
     public Image vector_negativo;
     private float _initial_height;
@@ -14,16 +14,18 @@ public class VelocidadX : MonoBehaviour
     void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject textoVector = GameObject.FindGameObjectWithTag("Vector");
+        _texto_vector = textoVector.GetComponent<TextMeshProUGUI>();
         _velocidad_jugador = player.GetComponent<IPlayerVelocity>();
         _initial_height = vector_positivo.rectTransform.sizeDelta.y;
     }
 
     void Update()
     {
-        texto_velocidad.text = _velocidad_jugador.Velocidad.x.ToString("F2");
-        texto_vector.text = $"{_velocidad_jugador.Velocidad.x.ToString("F2")}, {_velocidad_jugador.Velocidad.y.ToString("F2")}, {_velocidad_jugador.Velocidad.z.ToString("F2")}";
+        texto_velocidad.text = _velocidad_jugador.Velocidad.y.ToString("F2");
+        _texto_vector.text = $"{_velocidad_jugador.Velocidad.x.ToString("F2")}, {_velocidad_jugador.Velocidad.y.ToString("F2")}, {_velocidad_jugador.Velocidad.z.ToString("F2")}";
 
-        float yValue = (_velocidad_jugador.Velocidad.x / _velocidad_jugador.Velocidad_Movimiento) * _initial_height;
+        float yValue = (_velocidad_jugador.Velocidad.y / _velocidad_jugador.Velocidad_Salto) * _initial_height;
 
         Vector2 positivo = vector_positivo.rectTransform.sizeDelta;
         positivo.y = yValue;
