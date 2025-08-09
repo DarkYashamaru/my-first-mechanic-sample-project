@@ -16,7 +16,7 @@ public class AnimationController : MonoBehaviour
     void Update()
     {
         _animator.SetFloat("YDirection", _velocidad_jugador.Velocidad.y > 0 ? 0 : 1, 0.2f, Time.deltaTime);
-        _animator.SetFloat("XDirection", _velocidad_jugador.Velocidad.x, 0.1f, Time.deltaTime);
+        _animator.SetFloat("XDirection", _velocidad_jugador.Axis.x, 0.1f, Time.deltaTime);
 
         _animator.SetBool("IsGrounded", _velocidad_jugador.Grounded);
     }

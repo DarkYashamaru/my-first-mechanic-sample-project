@@ -35,6 +35,7 @@ public class MovimientoSimple : MonoBehaviour, IPlayerVelocity
 
 
     public Vector3 Velocidad { get => velocidad; }
+    public Vector3 Axis { get => velocidad; }
     public float Gravedad { get => 0; }
     public float Velocidad_Salto { get => 0; }
     public float Velocidad_Movimiento { get => velocidad_movimiento; }
